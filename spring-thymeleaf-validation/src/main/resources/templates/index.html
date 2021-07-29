@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Home</title>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+	<div class="container mt-4">
+		<div class="row">	
+			<div class="col-10">
+				<h3>All Employees</h3>
+			</div>
+			<div class="col">
+				<a th:href="@{'/employee-create'}" class="btn btn-primary">Add</a>
+			</div>
+		</div>
+		<div class="row mt-5">
+			<div class="col-12">
+				<table class="table">	
+					<thead>
+						<tr>
+							<th>No.</th>
+							<th>Name</th>
+							<th>Email</th>
+							<th>Salary</th>
+							<th>Position</th>
+							<th>Gender</th>
+							<th>Birthday</th>
+							<th>Married</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="e,no : ${empList}">
+							<td th:text="${no.count} + '.'"></td>
+							<td th:text="${e.name}"></td>
+							<td th:text="${e.email}"></td>
+							<td th:text="${e.salary}"></td>
+							<td th:text="${e.position}"></td>
+							<td th:text="${e.gender}"></td>
+							<td th:text="${e.dob}"></td>
+							<td th:text="${e.married}"></td>
+							<td>
+								<a th:href="@{'/employee-edit/'}+${e.id}" class="text-warning">Edit</a>|
+								<a th:href="@{'/employee-delete/'}+${e.id}" class="text-danger">Delete</a>
+							</td>
+						</tr>
+					</tbody>
+				
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
