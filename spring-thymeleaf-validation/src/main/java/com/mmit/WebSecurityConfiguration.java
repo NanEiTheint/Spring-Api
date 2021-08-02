@@ -53,7 +53,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
 		http
 		.authorizeRequests()
 		.antMatchers("/").permitAll() //allow index page
-		.antMatchers("/employee-create").hasAnyRole("User","Admin")//allow user
+		.antMatchers("/employee-create/**").hasAnyRole("User","Admin")//allow user
 		.antMatchers("/employee-edit/**","/employee-delete/**").hasRole("Admin")
 		.anyRequest().authenticated() //not allow others
 			//define web filter above part
@@ -89,7 +89,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
 		http
 		.authorizeRequests()
 		.antMatchers("/").permitAll() //allow index page
-		.antMatchers("/employee-create").hasAnyRole("User","Admin")//allow user
+		.antMatchers("/employee-create/**").hasAnyRole("User","Admin")//allow user
 		.antMatchers("/employee-edit/**","/employee-delete/**").hasRole("Admin")
 		.anyRequest().authenticated() //not allow others
 			//define web filter above part
